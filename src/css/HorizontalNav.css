@@ -1,0 +1,34 @@
+
+.slide-item {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+  padding: 10px;
+  text-decoration: none !important;  
+  cursor: pointer;
+}
+
+.slide-item h3 {
+  color: #333;
+  font-size: 16px;
+  
+}
+ .slide-item img {
+  max-width: 50%;
+  height: auto;
+  display: block; 
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #333;
+}
+
+.slick-prev {
+  left: -30px;
+}
+
+.slick-next {
+  right: -30px;
+}

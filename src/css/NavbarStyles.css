@@ -1,0 +1,47 @@
+
+.nav-link {
+    font-weight: 500;
+    font-size: 16px;
+    color: #6c757d;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    color: #ff4949;
+  background-color: #f0f0f0;
+  }
+  
+  .airbnb-link {
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    color: #6c757d;
+    transition: background-color 0.3s ease;
+  }
+  
+  .airbnb-link:hover {
+    color: #ff4949;;
+    background-color: #f0f0f0;
+  }
+  
+  .icon {
+    font-size: 1.5rem;
+    color: #154b7b;
+  }
+  
+  .dropdown-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding-right: 10px;
+  }
+  
+  .profile-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
