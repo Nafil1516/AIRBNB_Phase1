@@ -1,6 +1,5 @@
 import React from "react";
 import "../css/FooterStyles.css";
-
 const Footer = () => {
   return (
     <div className="container-fluid" style={{ backgroundColor: "#F7F7F7" }}>

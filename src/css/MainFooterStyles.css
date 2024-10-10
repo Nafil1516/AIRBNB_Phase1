@@ -1,8 +1,8 @@
 .MainContainer {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates three equal columns */
-    gap: 20px; /* Adjust the gap between items as needed */
-    padding: 20px 0; /* Add some padding for spacing */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    padding: 20px 0; 
   }
   
   .FooterItem {

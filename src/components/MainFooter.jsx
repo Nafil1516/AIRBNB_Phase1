@@ -9,7 +9,7 @@ const MainFooter = () => {
 
         <div className="MainContainer">
           {" "}
-          {/* Ensure class name is correctly spelled */}
+         
           <div className="FooterItem">
             <p
               style={{ fontSize: "16px", fontWeight: "500", textAlign: "left" }}

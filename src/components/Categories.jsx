@@ -16,7 +16,7 @@ function SwipeToSlide() {
     className: "center",
     infinite: false,
     centerPadding: "60px",
-    slidesToShow: 10, // Default for large screens
+    slidesToShow: 10,
     swipeToSlide: true,
     afterChange: function (index) {
       console.log(
@@ -25,23 +25,23 @@ function SwipeToSlide() {
     },
     responsive: [
       {
-        breakpoint: 1024, // Large screens
+        breakpoint: 1024,
         settings: {
-          slidesToShow: 5, // Show 5 slides on large screens
+          slidesToShow: 5, 
           centerPadding: "40px",
         },
       },
       {
-        breakpoint: 768, // Medium screens (tablets)
+        breakpoint: 768, 
         settings: {
-          slidesToShow: 3, // Show 3 slides on medium screens
+          slidesToShow: 3, 
           centerPadding: "30px",
         },
       },
       {
-        breakpoint: 480, // Small screens (mobile)
+        breakpoint: 480, 
         settings: {
-          slidesToShow: 2, // Show 2 slides on small screens
+          slidesToShow: 2, 
           centerPadding: "20px",
         },
       },

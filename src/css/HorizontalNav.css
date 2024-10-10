@@ -83,11 +83,11 @@
 }
 @media (max-width: 480px) {
   .slick-prev {
-    left: 5px; /* Move the left arrow inwards */
+    left: 5px; 
   }
 
   .slick-next {
-    right: 5px; /* Move the right arrow inwards */
+    right: 5px; 
   }
 }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom"; 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,17 +11,17 @@ import '../css/NavbarStyles.css';
 
 function TopNavbar() {
   return (
-    <Navbar expand="lg" className="p-3"> {/* Added padding for better spacing */}
+    <Navbar expand="lg" className="p-3"> 
       <Container>
         <Row className="w-100 align-items-center">
-          {/* Logo Section */}
+       
           <Col xs={12} md={4} className="text-center text-md-start mb-2 mb-md-0">
             <Navbar.Brand href="/">
               <img src={logo} alt="Logo" style={{ width: "120px", height: "auto" }} />
             </Navbar.Brand>
           </Col>
 
-          {/* Nav Links Section */}
+       
           <Col xs={12} md={3} className="text-center">
             <Nav className="justify-content-center">
               <Nav.Link as={Link} to="/" className="nav-link">
@@ -30,13 +30,11 @@ function TopNavbar() {
               <Nav.Link as={Link} to="/experience" className="nav-link">
                 Experience
               </Nav.Link>
-              <Nav.Link as={Link} to="/experience" className="nav-link">
-                Rents
-              </Nav.Link>
+           
             </Nav>
           </Col>
 
-          {/* Right Section with Airbnb and Profile Links */}
+        
           <Col xs={12} md={4} className="text-center text-md-end">
             <Nav className="justify-content-center justify-content-md-end align-items-center d-flex" style={{ gap: "20px" }}>
               <Nav.Link href="#airbnb" className="airbnb-link">
