@@ -16,14 +16,38 @@ function SwipeToSlide() {
     className: "center",
     infinite: false,
     centerPadding: "60px",
-    slidesToShow: 9,
+    slidesToShow: 10, // Default for large screens
     swipeToSlide: true,
     afterChange: function (index) {
       console.log(
         `Slider Changed to: ${index + 1}, background: #222; color: #bada55`
       );
     },
+    responsive: [
+      {
+        breakpoint: 1024, // Large screens
+        settings: {
+          slidesToShow: 5, // Show 5 slides on large screens
+          centerPadding: "40px",
+        },
+      },
+      {
+        breakpoint: 768, // Medium screens (tablets)
+        settings: {
+          slidesToShow: 3, // Show 3 slides on medium screens
+          centerPadding: "30px",
+        },
+      },
+      {
+        breakpoint: 480, // Small screens (mobile)
+        settings: {
+          slidesToShow: 2, // Show 2 slides on small screens
+          centerPadding: "20px",
+        },
+      },
+    ],
   };
+
   return (
     <div className="container">
       <div className="slider-container">
@@ -38,67 +62,50 @@ function SwipeToSlide() {
           </a>
           <a className="slide-item">
             <img src={item3} alt="" width={24} height={24} />
-
             <h3>Rooms</h3>
           </a>
           <a className="slide-item">
             <img src={item4} alt="" width={24} height={24} />
-
             <h3>Top Cities</h3>
           </a>
           <a className="slide-item">
             <img src={item5} alt="" width={24} height={24} />
-
             <h3>Lake</h3>
           </a>
           <a className="slide-item">
             <img src={item6} alt="" width={24} height={24} />
-
             <h3>Amazing Pools</h3>
           </a>
           <a className="slide-item">
             <img src={item7} alt="" width={24} height={24} />
-
             <h3>Bed & Breakfast</h3>
           </a>
           <a className="slide-item">
             <img src={item8} alt="" width={24} height={24} />
-
             <h3>Mansions</h3>
           </a>
           <a className="slide-item">
             <img src={item9} alt="" width={24} height={24} />
-
             <h3>Castles</h3>
           </a>
           <a className="slide-item">
-            <img src={item4} alt="" width={24} height={24} />
-
-            <h3>Top Cities</h3>
-          </a>
-          <a className="slide-item">
             <img src={item5} alt="" width={24} height={24} />
-
             <h3>Lake</h3>
           </a>
           <a className="slide-item">
             <img src={item6} alt="" width={24} height={24} />
-
             <h3>Amazing Pools</h3>
           </a>
           <a className="slide-item">
             <img src={item7} alt="" width={24} height={24} />
-
             <h3>Bed & Breakfast</h3>
           </a>
           <a className="slide-item">
             <img src={item8} alt="" width={24} height={24} />
-
             <h3>Mansions</h3>
           </a>
           <a className="slide-item">
             <img src={item9} alt="" width={24} height={24} />
-
             <h3>Castles</h3>
           </a>
         </Slider>

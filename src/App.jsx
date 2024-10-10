@@ -6,6 +6,7 @@ import SearchBar from "./components/SearchBar";
 import Categories from "./components/Categories";
 import Cards from "./components/Cards";
 import Footer from "./components/Footer";
+import MainFooter from "./components/MainFooter";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
       <Categories />
       <Cards />
       <Footer/>
+      <MainFooter/>
     </Router>
   );
 }

@@ -2,5 +2,47 @@
 
   cursor: pointer;
 }
+/* SearchBarStyles.css */
+
+/* Adjust hover container styling */
+.hover-container h6 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.hover-container span {
+  color: gray;
+  font-size: 14px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .hover-container h6 {
+    font-size: 14px;
+  }
+
+  .hover-container span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hover-container h6 {
+    font-size: 12px;
+  }
+
+  .hover-container span {
+    font-size: 10px;
+  }
+  
+  .search-bar {
+    padding: 15px;
+  }
+}
+
 
 

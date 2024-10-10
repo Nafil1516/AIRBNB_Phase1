@@ -13,15 +13,6 @@ import card11 from "../assets/images/cards/card11.webp";
 import card12 from "../assets/images/cards/card12.webp";
 import card13 from "../assets/images/cards/card13.webp";
 import card14 from "../assets/images/cards/card14.webp";
-
-
-
-
-
-
-
-
-
 import Slider from "react-slick";
 
 const Cards = () => {

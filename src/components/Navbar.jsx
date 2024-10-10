@@ -9,18 +9,20 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/images/logo.png";
 import '../css/NavbarStyles.css';
 
-function ColorSchemesExample() {
+function TopNavbar() {
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" className="p-3"> {/* Added padding for better spacing */}
       <Container>
         <Row className="w-100 align-items-center">
-          <Col xs={12} md={4}>
+          {/* Logo Section */}
+          <Col xs={12} md={4} className="text-center text-md-start mb-2 mb-md-0">
             <Navbar.Brand href="/">
               <img src={logo} alt="Logo" style={{ width: "120px", height: "auto" }} />
             </Navbar.Brand>
           </Col>
 
-          <Col xs={12} md={4} className="text-center">
+          {/* Nav Links Section */}
+          <Col xs={12} md={3} className="text-center">
             <Nav className="justify-content-center">
               <Nav.Link as={Link} to="/" className="nav-link">
                 Stays
@@ -28,11 +30,15 @@ function ColorSchemesExample() {
               <Nav.Link as={Link} to="/experience" className="nav-link">
                 Experience
               </Nav.Link>
+              <Nav.Link as={Link} to="/experience" className="nav-link">
+                Rents
+              </Nav.Link>
             </Nav>
           </Col>
 
-          <Col xs={12} md={4}>
-            <Nav className="justify-content-end align-items-center d-flex" style={{ gap: "20px" }}>
+          {/* Right Section with Airbnb and Profile Links */}
+          <Col xs={12} md={4} className="text-center text-md-end">
+            <Nav className="justify-content-center justify-content-md-end align-items-center d-flex" style={{ gap: "20px" }}>
               <Nav.Link href="#airbnb" className="airbnb-link">
                 Airbnb your home
               </Nav.Link>
@@ -58,4 +64,4 @@ function ColorSchemesExample() {
   );
 }
 
-export default ColorSchemesExample;
+export default TopNavbar;
