@@ -30,10 +30,10 @@ function App() {
           }
         />
       </Routes>
-
+     
       <Cards />
-      <Footer />
-      <MainFooter />
+      <Footer/>
+      <MainFooter/>
     </Router>
   );
 }

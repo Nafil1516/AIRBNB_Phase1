@@ -1,67 +1,62 @@
-.MainContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-    padding: 20px 0; 
-  }
-  
-  .FooterItem {
-    cursor: pointer;
-  }
-  footer {
-    padding: 20px;
-    background-color: #f7f7f7;
-    text-align: center;
-    font-family: Arial, sans-serif;
-  }
-  
-  .footer-top {
-    margin-bottom: 10px;
-  }
-  
-  .footer-top a {
-    text-decoration: none;
-    color: #808080;
-    font-weight: bold;
-  }
-  
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .footer-left {
-    font-size: 14px;
-  }
-  
-  .footer-left a {
-    color: #808080;
-    text-decoration: none;
-    margin: 0 5px;
-  }
-  
-  .footer-right {
-    display: flex;
-    gap: 10px;
-    font-size: 14px;
-  }
-  
-  .footer-right a {
-    text-decoration: none;
-    color: #808080;
-  }
-  
-  .footer-right svg {
-    font-size: 18px;
-  }
+
   
   hr {
     border: none;
     border-top: 1px solid #ddd;
     margin: 20px 0;
   }
+  .MainContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .FooterItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .FooterItem a {
+    font-size: 16px;
+    color: grey;
+    line-height: 20px;
+    text-decoration: none;
+    margin-bottom: 5px;
+  }
+  
+  .FooterItem a:hover {
+    color: black; 
+  }
+  
+  .FooterTitle {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+  }
+  .footer-left p a{
+    color: black;
+    text-decoration: none !important;
+  }
+  
+  .footer-left {
+    font-size: 14px;
+    color: black !important;
+  }
+  
+  .footer-right a {
+    margin-left: 15px;
+    font-size: 14px;
+    color: black;
+    text-decoration: none;
+  }
+  
   
   @media (max-width: 768px) {
     .footer-bottom {

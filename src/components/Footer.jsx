@@ -5,7 +5,7 @@ const Footer = () => {
  
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Footer categories
+
   const categories = [
     "All",
     "Popular",
