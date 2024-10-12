@@ -5,8 +5,8 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Dropdown from "react-bootstrap/Dropdown";
-import DatePicker from "react-datepicker"; 
-import "react-datepicker/dist/react-datepicker.css"
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import "../css/SearchBarStyles.css";
 
 const SearchBar = ({ searchType }) => {
@@ -20,7 +20,7 @@ const SearchBar = ({ searchType }) => {
 
   const locations = ["New York", "Los Angeles", "Chicago"];
   const ageCategories = ["0-12", "13-17", "18-25", "26-35", "36-50", "51+"];
-  const activities = ["Sightseeing", "Hiking", "Dining", "Shopping"]; 
+  const activities = ["Sightseeing", "Hiking", "Dining", "Shopping"];
 
   const handleSearch = () => {
     console.log("Search initiated with: ", {
@@ -49,12 +49,18 @@ const SearchBar = ({ searchType }) => {
             {searchType === "stays" ? (
               <>
                 <Col
-                  xs={12} sm={3} md={2}
+                  xs={12}
+                  sm={3}
+                  md={2}
                   className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
                   style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
                 >
                   <Dropdown>
-                    <Dropdown.Toggle variant="none" id="dropdown-location" style={{ fontWeight: 'bold' }}>
+                    <Dropdown.Toggle
+                      variant="none"
+                      id="dropdown-location"
+                      style={{ fontWeight: "bold" }}
+                    >
                       {selectedLocation || "Where"}
                     </Dropdown.Toggle>
                     <p>Destination</p>
@@ -72,13 +78,21 @@ const SearchBar = ({ searchType }) => {
                 </Col>
 
                 <Col
-                  xs={12} sm={3} md={2}
+                  xs={12}
+                  sm={3}
+                  md={2}
                   className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
                   style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
                 >
                   <Dropdown>
-                    <Dropdown.Toggle variant="none" id="dropdown-checkin" style={{ fontWeight: 'bold' }}>
-                      {checkInDate ? checkInDate.toLocaleDateString() : "Check in"}
+                    <Dropdown.Toggle
+                      variant="none"
+                      id="dropdown-checkin"
+                      style={{ fontWeight: "bold" }}
+                    >
+                      {checkInDate
+                        ? checkInDate.toLocaleDateString()
+                        : "Check in"}
                     </Dropdown.Toggle>
                     <p>Check-in Date</p>
                     <Dropdown.Menu>
@@ -96,13 +110,21 @@ const SearchBar = ({ searchType }) => {
                 </Col>
 
                 <Col
-                  xs={12} sm={3} md={2}
+                  xs={12}
+                  sm={3}
+                  md={2}
                   className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
                   style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
                 >
                   <Dropdown>
-                    <Dropdown.Toggle variant="none" id="dropdown-checkout" style={{ fontWeight: 'bold' }}>
-                      {checkOutDate ? checkOutDate.toLocaleDateString() : "Check out"}
+                    <Dropdown.Toggle
+                      variant="none"
+                      id="dropdown-checkout"
+                      style={{ fontWeight: "bold" }}
+                    >
+                      {checkOutDate
+                        ? checkOutDate.toLocaleDateString()
+                        : "Check out"}
                     </Dropdown.Toggle>
                     <p>Check-out Date</p>
                     <Dropdown.Menu>
@@ -120,12 +142,18 @@ const SearchBar = ({ searchType }) => {
                 </Col>
 
                 <Col
-                  xs={12} sm={3} md={2}
+                  xs={12}
+                  sm={3}
+                  md={2}
                   className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
                   style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
                 >
                   <Dropdown>
-                    <Dropdown.Toggle variant="none" id="dropdown-age" style={{ fontWeight: 'bold' }}>
+                    <Dropdown.Toggle
+                      variant="none"
+                      id="dropdown-age"
+                      style={{ fontWeight: "bold" }}
+                    >
                       {selectedAgeCategory || "Who"}
                     </Dropdown.Toggle>
                     <p>Add Guest</p>
@@ -143,7 +171,9 @@ const SearchBar = ({ searchType }) => {
                 </Col>
 
                 <Col
-                  xs={12} sm={12} md={2}
+                  xs={12}
+                  sm={12}
+                  md={2}
                   className="d-flex justify-content-center align-items-center"
                   style={{ padding: "0 10px" }}
                 >
@@ -157,22 +187,32 @@ const SearchBar = ({ searchType }) => {
                     }}
                     onClick={handleSearch}
                   >
-                    <i className="bi bi-search" style={{ fontSize: "1rem" }}></i>
+                    <i
+                      className="bi bi-search"
+                      style={{ fontSize: "1rem" }}
+                    ></i>
                   </Button>
                 </Col>
               </>
             ) : (
               <>
                 <Col
-                  xs={12} sm={3} md={2}
+                  xs={12}
+                  sm={3}
+                  md={2}
                   className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
                   style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
                 >
                   <Dropdown>
-                    <Dropdown.Toggle className="text-center" variant="none" id="dropdown-activity" style={{ fontWeight: 'bold' }}>
+                    <Dropdown.Toggle
+                      className="text-center"
+                      variant="none"
+                      id="dropdown-activity"
+                      style={{ fontWeight: "bold" }}
+                    >
                       {activity || "Select Activity"}
                     </Dropdown.Toggle>
-                    <p > Activity</p>
+                    <p> Activity</p>
                     <Dropdown.Menu>
                       {activities.map((act, index) => (
                         <Dropdown.Item
@@ -187,12 +227,19 @@ const SearchBar = ({ searchType }) => {
                 </Col>
 
                 <Col
-                  xs={12} sm={3} md={2}
+                  xs={12}
+                  sm={3}
+                  md={2}
                   className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
                   style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
                 >
                   <Dropdown>
-                    <Dropdown.Toggle className="text-center" variant="none" id="dropdown-participants" style={{ fontWeight: 'bold' }}>
+                    <Dropdown.Toggle
+                      className="text-center"
+                      variant="none"
+                      id="dropdown-participants"
+                      style={{ fontWeight: "bold" }}
+                    >
                       {participants || "Participants"}
                     </Dropdown.Toggle>
                     <p> Add Participants</p>
@@ -210,15 +257,21 @@ const SearchBar = ({ searchType }) => {
                 </Col>
 
                 <Col
-                  xs={12} sm={3} md={2}
+                  xs={12}
+                  sm={3}
+                  md={2}
                   className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
                   style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
                 >
                   <Dropdown>
-                    <Dropdown.Toggle  variant="none" id="dropdown-date" style={{ fontWeight: 'bold' }}>
+                    <Dropdown.Toggle
+                      variant="none"
+                      id="dropdown-date"
+                      style={{ fontWeight: "bold" }}
+                    >
                       {checkInDate ? checkInDate.toLocaleDateString() : "Date"}
                     </Dropdown.Toggle>
-                    <p >Select Date</p>
+                    <p>Select Date</p>
                     <Dropdown.Menu>
                       <div className="datepicker-container">
                         <DatePicker
@@ -234,7 +287,9 @@ const SearchBar = ({ searchType }) => {
                 </Col>
 
                 <Col
-                  xs={12} sm={12} md={2}
+                  xs={12}
+                  sm={12}
+                  md={2}
                   className="d-flex justify-content-center align-items-center"
                   style={{ padding: "0 10px" }}
                 >
@@ -248,7 +303,10 @@ const SearchBar = ({ searchType }) => {
                     }}
                     onClick={handleSearch}
                   >
-                    <i className="bi bi-search" style={{ fontSize: "1rem" }}></i>
+                    <i
+                      className="bi bi-search"
+                      style={{ fontSize: "1rem" }}
+                    ></i>
                   </Button>
                 </Col>
               </>

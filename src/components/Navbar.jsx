@@ -11,7 +11,8 @@ import '../css/NavbarStyles.css';
 
 function TopNavbar() {
   return (
-    <Navbar expand="lg" className="p-3"> 
+    <div className="conatiner">
+      <Navbar expand="lg" className="p-3"> 
       <Container>
         <Row className="w-100 align-items-center">
        
@@ -59,6 +60,7 @@ function TopNavbar() {
         </Row>
       </Container>
     </Navbar>
+    </div>
   );
 }
 

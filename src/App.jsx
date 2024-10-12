@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
-import Categories from "./components/Categories";
 import Cards from "./components/Cards";
 import Footer from "./components/Footer";
 import MainFooter from "./components/MainFooter";
@@ -31,10 +30,10 @@ function App() {
           }
         />
       </Routes>
-      <Categories />
+
       <Cards />
-      <Footer/>
-      <MainFooter/>
+      <Footer />
+      <MainFooter />
     </Router>
   );
 }

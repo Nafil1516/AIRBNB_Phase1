@@ -2,6 +2,10 @@ import React from "react";
 import "../css/MainFooterStyles.css";
 
 const MainFooter = () => {
+  const navigate = useNavigate();
+  const Linkingpage = () => {
+    navigate("/LinktTo");
+  };
   return (
     <div className="container-fluid" style={{ backgroundColor: "#F7F7F7" }}>
       <div className="container">
@@ -11,7 +15,7 @@ const MainFooter = () => {
           {" "}
          
           <div className="FooterItem">
-            <p
+            <p onClick={Linkingpage}
               style={{ fontSize: "16px", fontWeight: "500", textAlign: "left" }}
             >
               Support

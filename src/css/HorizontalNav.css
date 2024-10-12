@@ -61,7 +61,10 @@
   height: auto;
 }
 
-
+button.slide-item {
+  background: none;
+  border: none;
+}
 
 /* Media queries */
 @media (max-width: 1024px) {
