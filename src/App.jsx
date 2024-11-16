@@ -33,7 +33,9 @@ function App() {
           }
         />
     
-
+        <Route path="/listing/:id" element={<ListingDetails />} />
+        
+        <Route path="/book/:id" element={<Bookingpage />} />
       </Routes>
       <Footer />
       <MainFooter />
