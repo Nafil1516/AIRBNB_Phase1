@@ -12,7 +12,7 @@ exports.getListingById = (req, res) => {
   if (property) {
     res.json(property);
   } else {
-    res.status(404).json({ message: 'Listing not found' });
+    res.status(404).json({ message: 'found no listing' });
   }
 };
 
