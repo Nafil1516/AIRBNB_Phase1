@@ -27,6 +27,13 @@ app.get('/api/listings/:id', (req, res) => {
       res.status(404).json({ message: ' not found' });
   }
 });
+app.get('/api/listings/search', (req, res) => {
+  const { query } = req.query;
+  const filteredProperties = properties.filter(p =>
+      p.title.toLowerCase().includes(query.toLowerCase())
+  );
+  res.json(filteredProperties);
+});
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
