@@ -6,8 +6,10 @@ import SearchBar from "./components/SearchBar";
 import Cards from "./components/Cards";
 import Footer from "./components/Footer";
 import MainFooter from "./components/MainFooter";
+import Bookingpage from "./components/Bookingpage";
 import ListingDetails from "./components/ListingDetails";
-import BookingPage from "./components/BookingPage";
+
+git
 
 function App() {
   return (
@@ -35,7 +37,7 @@ function App() {
         />
     
         <Route path="/listing/:id" element={<ListingDetails />} />
-        <Route path="/book/:id" element={<BookingPage />} />
+        <Route path="/book/:id" element={<Bookingpage />} />
       </Routes>
       <Footer />
       <MainFooter />
