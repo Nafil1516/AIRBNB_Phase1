@@ -15,9 +15,10 @@ const ListingDetails = () => {
         const data = await response.json();
         setListing(data);
       } catch (error) {
-        console.error("Error retrieving listing:", error);
+        console.error("Error fetching listing:", error);
       }
     };
+
     fetchListing();
   }, [id]);
 
@@ -30,6 +31,14 @@ const ListingDetails = () => {
   }
 
  
+  const handleGoBack = () => {
+    navigate("/"); 
+  };
+
+
+  const handleBookNow = () => {
+    navigate(`/book/${id}`);  
+  };
 
   return (
     <Container className="my-5">
