@@ -34,6 +34,27 @@ app.get('/api/listings/search', (req, res) => {
   );
   res.json(filteredProperties);
 });
+app.get("/api/listings/:id", (req, res) => {
+  const propertyId = req.params.id;
+
+
+  fs.readFile(path.join(__dirname, "data", "listings.json"), "utf8", (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: "Failed to read data" });
+    }
+
+    const listings = JSON.parse(data);
+
+
+    const property = listings.find((listing) => listing.id === propertyId);
+
+    if (property) {
+      res.json(property);
+    } else {
+      res.status(404).json({ error: "Property not found" });
+    }
+  });
+});
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
