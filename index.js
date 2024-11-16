@@ -55,6 +55,10 @@ app.get("/api/listings/:id", (req, res) => {
     }
   });
 });
+app.post('/api/bookings', (req, res) => {
+    
+  res.json({ message: 'Booking successfully created' });
+});
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
