@@ -7,6 +7,7 @@ import Cards from "./components/Cards";
 import Footer from "./components/Footer";
 import MainFooter from "./components/MainFooter";
 
+
 function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function App() {
           element={
             <>
               <SearchBar searchType="stays" />
+              <Cards />
             </>
           }
         />
@@ -26,14 +28,15 @@ function App() {
           element={
             <>
               <SearchBar searchType="experiences" />
+              <Cards />
             </>
           }
         />
+    
+
       </Routes>
-     
-      <Cards />
-      <Footer/>
-      <MainFooter/>
+      <Footer />
+      <MainFooter />
     </Router>
   );
 }

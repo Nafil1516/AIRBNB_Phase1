@@ -1,42 +1,28 @@
-.hover-container {
-  cursor: pointer;
-}
-/* SearchBarStyles.css */
-
-.hover-container h6 {
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.hover-container span {
-  color: gray;
-  font-size: 14px;
+/* General Styles */
+.search-bar .dropdown-toggle {
+  color: black; /* Ensures text color is black */
+  background-color: transparent; /* No background color */
+  border: none; /* Removes borders */
+  text-decoration: none;
+  transition: none; /* Removes hover transition effect */
+  font-weight: 500;
 }
 
-@media (max-width: 768px) {
-  .search-bar {
-    flex-direction: column;
-  }
-
-  .hover-container h6 {
-    font-size: 14px;
-  }
-
-  .hover-container span {
-    font-size: 12px;
-  }
+.search-bar .dropdown-toggle:hover {
+  color: black; /* Prevents color change on hover */
+  background-color: transparent; /* No background effect */
 }
 
-@media (max-width: 480px) {
-  .hover-container h6 {
-    font-size: 12px;
-  }
+.search-bar .btn-danger {
+  background-color: #dc3545; /* Default danger color */
+  border: none;
+  transition: none; /* Removes hover effect */
+}
 
-  .hover-container span {
-    font-size: 10px;
-  }
+.search-bar .btn-danger:hover {
+  background-color: #dc3545; /* Keeps color same on hover */
+}
 
-  .search-bar {
-    padding: 15px;
-  }
+.dropdown-menu {
+  border-radius: 10px; /* Slightly rounded dropdown menu */
 }
