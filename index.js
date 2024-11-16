@@ -19,6 +19,14 @@ app.get('/api/listings', (req, res) => {
     res.json(properties);
 });
 
+app.get('/api/listings/:id', (req, res) => {
+  const property = properties.find(p => p.id === parseInt(req.params.id));
+  if (property) {
+      res.json(property);
+  } else {
+      res.status(404).json({ message: ' not found' });
+  }
+});
 
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
