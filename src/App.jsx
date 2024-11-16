@@ -9,6 +9,7 @@ import MainFooter from "./components/MainFooter";
 import Bookingpage from "./components/Bookingpage";
 import ListingDetails from "./components/ListingDetails";
 
+
 function App() {
   return (
     <Router>
@@ -35,7 +36,6 @@ function App() {
         />
     
         <Route path="/listing/:id" element={<ListingDetails />} />
-        
         <Route path="/book/:id" element={<Bookingpage />} />
       </Routes>
       <Footer />
