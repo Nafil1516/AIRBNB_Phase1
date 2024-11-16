@@ -1,0 +1,241 @@
+[
+  {
+    "id": 1,
+    "image": "card1.webp",
+    "category": "category1",
+    "title": "Live Like Bollywood star Jhanvi Kapoor",
+    "host": "Hosted by Jhanvi Kapoor",
+    "price": "$100"
+  },
+  {
+    "id": 2,
+    "image": "card2.webp",
+    "category": "category2",
+    "title": "Go Vip with Kevin Hart",
+    "host": "Hosted by Kevin Hart",
+    "price": "$160"
+  },
+  {
+    "id": 3,
+    "image": "card3.webp",
+    "category": "category3",
+    "title": "Wake up in the Musee d'Orsay",
+    "host": "Hosted by Mathiew",
+    "price": "$200"
+  },
+  {
+    "id": 4,
+    "image": "card4.webp",
+    "category": "category4",
+    "title": "Fun with Khaby Lame",
+    "host": "Hosted by Khaby Lame",
+    "price": "$250"
+  },
+  {
+    "id": 5,
+    "image": "card5.webp",
+    "category": "category1",
+    "title": "Go on tour with Feid",
+    "host": "Hosted by Feid",
+    "price": "$290"
+  },
+  {
+    "id": 6,
+    "image": "card6.webp",
+    "category": "category6",
+    "title": "Stay In Europe",
+    "host": "Hosted by Italian",
+    "price": "$350"
+  },
+  {
+    "id": 7,
+    "image": "card7.jpeg",
+    "category": "category8",
+    "title": "Design your Incredible Supersuit",
+    "host": "Hosted by Edna Mode",
+    "price": "$175"
+  },
+  {
+    "id": 8,
+    "image": "card8.webp",
+    "category": "category9",
+    "title": "Crash at the X-Mansion",
+    "host": "Hosted by Jubilee",
+    "price": "$380"
+  },
+  {
+    "id": 9,
+    "image": "card9.webp",
+    "category": "category12",
+    "title": "Shrek's Swamp",
+    "host": "Hosted by Donkey",
+    "price": "$265"
+  },
+  {
+    "id": 10,
+    "image": "card10.jpeg",
+    "category": "category5",
+    "title": "Home Alone Holiday",
+    "host": "Hosted by Buzz",
+    "price": "$295"
+  },
+
+  {
+    "id": 12,
+    "image": "card12.webp",
+    "category": "category5",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$284"
+  },
+  {
+    "id": 13,
+    "image": "card13.webp",
+    "category": "category8",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$240"
+  }
+  ,
+  {
+    "id": 14,
+    "image": "card14.webp",
+    "category": "category11",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$150"
+  },
+  {
+    "id": 15,
+    "image": "card15.webp",
+    "category": "category12",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$140"
+  }
+  ,
+  {
+    "id": 16,
+    "image": "card16.webp",
+    "category": "category10",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$130"
+  }
+  ,
+  {
+    "id": 17,
+    "image": "card17.webp",
+    "category": "category10",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$125"
+  }
+  ,
+  {
+    "id": 18,
+    "image": "card18.webp",
+    "category": "category1",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$210"
+  }
+  ,
+  {
+    "id": 19,
+    "image": "card19.webp",
+    "category": "category12",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$280"
+  }
+  ,
+  {
+    "id": 20,
+    "image": "card20.webp",
+    "category": "category2",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$265"
+  }
+  ,
+  {
+    "id": 21,
+    "image": "card21.webp",
+    "category": "category3",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$295"
+  },
+  {
+    "id": 22,
+    "image": "card22.webp",
+    "category": "category1",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$182"
+  }
+  ,
+  {
+    "id": 23,
+    "image": "card23.webp",
+    "category": "category1",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$400"
+  }
+  ,
+  {
+    "id": 24,
+    "image": "card24.webp",
+    "category": "category1",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$292"
+  }
+  ,
+  {
+    "id": 25,
+    "image": "card25.webp",
+    "category": "category2",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$980"
+  }
+  ,
+  {
+    "id": 26,
+    "image": "card26.webp",
+    "category": "category2",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$183"
+  }
+  ,
+  {
+    "id": 27,
+    "image": "card27.webp",
+    "category": "category15",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$120"
+  }
+  ,
+  {
+    "id": 28,
+    "image": "card28.webp",
+    "category": "category8",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$130"
+  }
+  ,
+  {
+    "id": 29,
+    "image": "card29.webp",
+    "category": "category5",
+    "title": "The Last BlockBuster",
+    "host": "Hosted by Sandi",
+    "price": "$200"
+  }
+]
