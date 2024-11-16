@@ -130,7 +130,7 @@ const BookingPage = () => {
 
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="checkInDate">
-                  <Form.Label>Check-in Date</Form.Label>
+                  <Form.Label>Check--in Date</Form.Label>
                   <Form.Control
                     type="date"
                     value={checkInDate}
@@ -140,7 +140,7 @@ const BookingPage = () => {
                 </Form.Group>
 
                 <Form.Group controlId="checkOutDate" className="my-3">
-                  <Form.Label>Check-out Date</Form.Label>
+                  <Form.Label>Check--out Date</Form.Label>
                   <Form.Control
                     type="date"
                     value={checkOutDate}
