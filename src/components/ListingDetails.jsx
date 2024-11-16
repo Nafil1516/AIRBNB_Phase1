@@ -15,10 +15,9 @@ const ListingDetails = () => {
         const data = await response.json();
         setListing(data);
       } catch (error) {
-        console.error("Error fetching listing:", error);
+        console.error("Error retrieving listing:", error);
       }
     };
-
     fetchListing();
   }, [id]);
 
