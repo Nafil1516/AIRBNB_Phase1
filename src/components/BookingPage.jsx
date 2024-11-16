@@ -20,7 +20,7 @@ const BookingPage = () => {
         const data = await response.json();
         setProperty(data);
       } catch (error) {
-        console.error("Error retrieving property details:", error);
+        console.error("Error retrieving property detail:", error);
       }
     };
 
