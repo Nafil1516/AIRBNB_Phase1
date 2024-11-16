@@ -58,12 +58,35 @@ const Cards = () => {
   
 
   // Consolidated fetching logic
-// fetch on initial load
+  useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/listings");
+        const data = await response.json();
+        setCards(data);
+      } catch (error) {
+        console.error("Error fetching listings:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCards();
+  }, []); // fetch on initial load
 
+  // Filter cards based on category and search query
+  const filteredCards = cards.filter((card) => {
+    const matchesCategory = selectedCategory === "all" || card.category === selectedCategory;
+    const matchesSearch = card.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
- 
- 
+  const handleCardClick = (id) => {
+    navigate(`/listing/${id}`);
+  };
 
   const settings = {
     className: "center",
