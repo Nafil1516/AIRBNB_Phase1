@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
+import { Container, Row, Col, Form, Button, Dropdown } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "../css/SearchBarStyles.css";
@@ -34,36 +29,29 @@ const SearchBar = ({ searchType }) => {
   };
 
   return (
-    <Container className="mt-4">
+    <Container className="mt-5">
       <Row className="justify-content-center">
-        <Col xs={12} md={8}>
+        <Col xs={12} md={10} lg={8}>
           <Form
-            className="search-bar d-flex align-items-center justify-content-between p-3 flex-wrap"
+            className="search-bar d-flex align-items-center justify-content-between flex-wrap"
             style={{
               backgroundColor: "#fff",
-              boxShadow: "2px 2px 8px rgba(0, 0, 0, 0.1)",
-              borderRadius: "40px",
-              width: "100%",
+              boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.15)",
+              borderRadius: "50px",
+              padding: "20px",
             }}
           >
             {searchType === "stays" ? (
               <>
-                <Col
-                  xs={12}
-                  sm={3}
-                  md={2}
-                  className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
-                  style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
-                >
+                <Col xs={12} sm={6} md={2} className="px-2">
                   <Dropdown>
                     <Dropdown.Toggle
-                      variant="none"
+                      variant="outline-light"
                       id="dropdown-location"
-                      style={{ fontWeight: "bold" }}
+                      className="rounded-pill w-100 text-start px-3"
                     >
-                      {selectedLocation || "Where"}
+                      {selectedLocation || "Where"} <small>(Destination)</small>
                     </Dropdown.Toggle>
-                    <p>Destination</p>
                     <Dropdown.Menu>
                       {locations.map((location, index) => (
                         <Dropdown.Item
@@ -77,86 +65,61 @@ const SearchBar = ({ searchType }) => {
                   </Dropdown>
                 </Col>
 
-                <Col
-                  xs={12}
-                  sm={3}
-                  md={2}
-                  className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
-                  style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
-                >
+                <Col xs={12} sm={6} md={2} className="px-2">
                   <Dropdown>
                     <Dropdown.Toggle
-                      variant="none"
+                      variant="outline-light"
                       id="dropdown-checkin"
-                      style={{ fontWeight: "bold" }}
+                      className="rounded-pill w-100 text-start px-3"
                     >
                       {checkInDate
                         ? checkInDate.toLocaleDateString()
-                        : "Check in"}
+                        : "Check-in"}{" "}
+                      <small>(Date)</small>
                     </Dropdown.Toggle>
-                    <p>Check-in Date</p>
                     <Dropdown.Menu>
-                      <div className="datepicker-container">
-                        <DatePicker
-                          selected={checkInDate}
-                          onChange={(date) => setCheckInDate(date)}
-                          inline
-                          placeholderText="Select Check-in"
-                          dateFormat="P"
-                        />
-                      </div>
+                      <DatePicker
+                        selected={checkInDate}
+                        onChange={(date) => setCheckInDate(date)}
+                        inline
+                        placeholderText="Select Check-in"
+                      />
                     </Dropdown.Menu>
                   </Dropdown>
                 </Col>
 
-                <Col
-                  xs={12}
-                  sm={3}
-                  md={2}
-                  className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
-                  style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
-                >
+                <Col xs={12} sm={6} md={2} className="px-2">
                   <Dropdown>
                     <Dropdown.Toggle
-                      variant="none"
+                      variant="outline-light"
                       id="dropdown-checkout"
-                      style={{ fontWeight: "bold" }}
+                      className="rounded-pill w-100 text-start px-3"
                     >
                       {checkOutDate
                         ? checkOutDate.toLocaleDateString()
-                        : "Check out"}
+                        : "Check-out"}{" "}
+                      <small>(Date)</small>
                     </Dropdown.Toggle>
-                    <p>Check-out Date</p>
                     <Dropdown.Menu>
-                      <div className="datepicker-container">
-                        <DatePicker
-                          selected={checkOutDate}
-                          onChange={(date) => setCheckOutDate(date)}
-                          inline
-                          placeholderText="Select Check-out"
-                          dateFormat="P"
-                        />
-                      </div>
+                      <DatePicker
+                        selected={checkOutDate}
+                        onChange={(date) => setCheckOutDate(date)}
+                        inline
+                        placeholderText="Select Check-out"
+                      />
                     </Dropdown.Menu>
                   </Dropdown>
                 </Col>
 
-                <Col
-                  xs={12}
-                  sm={3}
-                  md={2}
-                  className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
-                  style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
-                >
+                <Col xs={12} sm={6} md={2} className="px-2">
                   <Dropdown>
                     <Dropdown.Toggle
-                      variant="none"
+                      variant="outline-light"
                       id="dropdown-age"
-                      style={{ fontWeight: "bold" }}
+                      className="rounded-pill w-100 text-start px-3"
                     >
-                      {selectedAgeCategory || "Who"}
+                      {selectedAgeCategory || "Who"} <small>(Guests)</small>
                     </Dropdown.Toggle>
-                    <p>Add Guest</p>
                     <Dropdown.Menu>
                       {ageCategories.map((age, index) => (
                         <Dropdown.Item
@@ -170,49 +133,27 @@ const SearchBar = ({ searchType }) => {
                   </Dropdown>
                 </Col>
 
-                <Col
-                  xs={12}
-                  sm={12}
-                  md={2}
-                  className="d-flex justify-content-center align-items-center"
-                  style={{ padding: "0 10px" }}
-                >
+                <Col xs={12} sm={12} md={2} className="text-center">
                   <Button
                     variant="danger"
-                    style={{
-                      borderRadius: "50%",
-                      padding: "10px 15px",
-                      backgroundColor: "#ff385c",
-                      border: "none",
-                    }}
+                    className="rounded-pill px-4 py-2"
                     onClick={handleSearch}
                   >
-                    <i
-                      className="bi bi-search"
-                      style={{ fontSize: "1rem" }}
-                    ></i>
+                    <i className="bi bi-search"></i> Search
                   </Button>
                 </Col>
               </>
             ) : (
               <>
-                <Col
-                  xs={12}
-                  sm={3}
-                  md={2}
-                  className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
-                  style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
-                >
+                <Col xs={12} sm={6} md={3} className="px-2">
                   <Dropdown>
                     <Dropdown.Toggle
-                      className="text-center"
-                      variant="none"
+                      variant="outline-light"
                       id="dropdown-activity"
-                      style={{ fontWeight: "bold" }}
+                      className="rounded-pill w-100 text-start px-3"
                     >
                       {activity || "Select Activity"}
                     </Dropdown.Toggle>
-                    <p> Activity</p>
                     <Dropdown.Menu>
                       {activities.map((act, index) => (
                         <Dropdown.Item
@@ -226,23 +167,15 @@ const SearchBar = ({ searchType }) => {
                   </Dropdown>
                 </Col>
 
-                <Col
-                  xs={12}
-                  sm={3}
-                  md={2}
-                  className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
-                  style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
-                >
+                <Col xs={12} sm={6} md={3} className="px-2">
                   <Dropdown>
                     <Dropdown.Toggle
-                      className="text-center"
-                      variant="none"
+                      variant="outline-light"
                       id="dropdown-participants"
-                      style={{ fontWeight: "bold" }}
+                      className="rounded-pill w-100 text-start px-3"
                     >
                       {participants || "Participants"}
                     </Dropdown.Toggle>
-                    <p> Add Participants</p>
                     <Dropdown.Menu>
                       {ageCategories.map((age, index) => (
                         <Dropdown.Item
@@ -256,57 +189,32 @@ const SearchBar = ({ searchType }) => {
                   </Dropdown>
                 </Col>
 
-                <Col
-                  xs={12}
-                  sm={3}
-                  md={2}
-                  className="d-flex flex-column justify-content-center mb-3 mb-sm-0"
-                  style={{ padding: "0 10px", borderLeft: "1px solid #e0e0e0" }}
-                >
+                <Col xs={12} sm={6} md={3} className="px-2">
                   <Dropdown>
                     <Dropdown.Toggle
-                      variant="none"
+                      variant="outline-light"
                       id="dropdown-date"
-                      style={{ fontWeight: "bold" }}
+                      className="rounded-pill w-100 text-start px-3"
                     >
                       {checkInDate ? checkInDate.toLocaleDateString() : "Date"}
                     </Dropdown.Toggle>
-                    <p>Select Date</p>
                     <Dropdown.Menu>
-                      <div className="datepicker-container">
-                        <DatePicker
-                          selected={checkInDate}
-                          onChange={(date) => setCheckInDate(date)}
-                          inline
-                          placeholderText="Select Date"
-                          dateFormat="P"
-                        />
-                      </div>
+                      <DatePicker
+                        selected={checkInDate}
+                        onChange={(date) => setCheckInDate(date)}
+                        inline
+                      />
                     </Dropdown.Menu>
                   </Dropdown>
                 </Col>
 
-                <Col
-                  xs={12}
-                  sm={12}
-                  md={2}
-                  className="d-flex justify-content-center align-items-center"
-                  style={{ padding: "0 10px" }}
-                >
+                <Col xs={12} sm={12} md={2} className="text-center">
                   <Button
                     variant="danger"
-                    style={{
-                      borderRadius: "50%",
-                      padding: "10px 15px",
-                      backgroundColor: "#ff385c",
-                      border: "none",
-                    }}
+                    className="rounded-pill px-4 py-2"
                     onClick={handleSearch}
                   >
-                    <i
-                      className="bi bi-search"
-                      style={{ fontSize: "1rem" }}
-                    ></i>
+                    <i className="bi bi-search"></i> Search
                   </Button>
                 </Col>
               </>
@@ -314,8 +222,6 @@ const SearchBar = ({ searchType }) => {
           </Form>
         </Col>
       </Row>
-
-      <hr style={{ borderBottom: "1px solid lightgrey", marginTop: "40px" }} />
     </Container>
   );
 };

@@ -6,6 +6,8 @@ import SearchBar from "./components/SearchBar";
 import Cards from "./components/Cards";
 import Footer from "./components/Footer";
 import MainFooter from "./components/MainFooter";
+import Bookingpage from "./components/Bookingpage";
+import ListingDetails from "./components/ListingDetails";
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
           element={
             <>
               <SearchBar searchType="stays" />
+              <Cards />
             </>
           }
         />
@@ -26,14 +29,17 @@ function App() {
           element={
             <>
               <SearchBar searchType="experiences" />
+              <Cards />
             </>
           }
         />
+    
+        <Route path="/listing/:id" element={<ListingDetails />} />
+        
+        <Route path="/book/:id" element={<Bookingpage />} />
       </Routes>
-     
-      <Cards />
-      <Footer/>
-      <MainFooter/>
+      <Footer />
+      <MainFooter />
     </Router>
   );
 }
