@@ -10,7 +10,7 @@ const BookingPage = () => {
   const [guestCount, setGuestCount] = useState(1);
   const [errorMessage, setErrorMessage] = useState("");  
   const [totalPrice, setTotalPrice] = useState(0); 
-  const [successMessage, setSuccessMessage] = useState(""); 
+  const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
