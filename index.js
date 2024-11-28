@@ -1,65 +1,31 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const authRoutes = require('./routes/authRoutes'); // Import the auth routes
+const listingRoutes = require('./routes/listingRoutes');
+const bookingRoutes = require('./routes/bookingRoutes');
+
 const app = express();
 const port = 5000;
 
-const properties = require('./data/properties.json');
-
-
+// Middleware
 app.use(cors());
-
-
 app.use(express.json());
-
-
 app.use('/cardsimages', express.static(path.join(__dirname, 'cardsimages')));
 
-app.get('/api/listings', (req, res) => {
-    res.json(properties);
-});
+// MongoDB Connection
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/propertiesDB'; // Use env variable for Mongo URI
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-app.get('/api/listings/:id', (req, res) => {
-  const property = properties.find(p => p.id === parseInt(req.params.id));
-  if (property) {
-      res.json(property);
-  } else {
-      res.status(404).json({ message: ' not found' });
-  }
-});
-app.get('/api/listings/search', (req, res) => {
-  const { query } = req.query;
-  const filteredProperties = properties.filter(p =>
-      p.title.toLowerCase().includes(query.toLowerCase())
-  );
-  res.json(filteredProperties);
-});
-app.get("/api/listings/:id", (req, res) => {
-  const propertyId = req.params.id;
+// Routes
+app.use('/api/listings', listingRoutes);
+app.use('/api/bookings', bookingRoutes);
+app.use('/api/auth', authRoutes); // Mount auth routes under /api/auth
 
-
-  fs.readFile(path.join(__dirname, "data", "listings.json"), "utf8", (err, data) => {
-    if (err) {
-      return res.status(500).json({ error: "Failed to read data" });
-    }
-
-    const listings = JSON.parse(data);
-
-
-    const property = listings.find((listing) => listing.id === propertyId);
-
-    if (property) {
-      res.json(property);
-    } else {
-      res.status(404).json({ error: "Property not found" });
-    }
-  });
-});
-app.post('/api/bookings', (req, res) => {
-    
-  res.json({ message: 'Booking successfully created' });
-});
-
+// Start Server
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on ${port}`);
 });
