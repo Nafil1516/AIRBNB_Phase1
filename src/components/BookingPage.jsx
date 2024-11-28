@@ -154,7 +154,7 @@ const BookingPage = () => {
               {successMessage && <Alert variant="success">{successMessage}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="checkInDate">
-                  <Form.Label>Check-in Date</Form.Label>
+                  <Form.Label>Check-in-Date</Form.Label>
                   <Form.Control
                     type="date"
                     value={checkInDate}
