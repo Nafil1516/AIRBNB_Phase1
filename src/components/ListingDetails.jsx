@@ -60,10 +60,10 @@ const ListingDetails = () => {
               <p className="text-muted">Hosted by {listing.host}</p>
               <p className="mb-4">{listing.description}</p>
               <h3 className="text-dark">{listing.price} per guest</h3>
-              <Button variant="dark" className="mt-4" onClick={handleBookNow}>Book Now</Button>
+              <Button variant="danger" style={{borderRadius:'50px'}} className="mt-4" onClick={handleBookNow}>Book Now</Button>
             </Card.Body>
           </Card>
-          <Button variant="dark" className="mt-4 ml-2" onClick={handleGoBack}>Return to Home</Button>  {/* Return Back Button */}
+          <Button variant="danger" style={{borderRadius:'50px'}} className="mt-4 ml-2" onClick={handleGoBack}>Return to Home</Button>  {/* Return Back Button */}
         </Col>
       </Row>
     </Container>

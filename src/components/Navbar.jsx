@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,9 +7,17 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../assets/images/logo.png";
-import '../css/NavbarStyles.css';
+import '../css/NavbarStyles.css';  // Assuming the CSS file is in place
 
 function TopNavbar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear user authentication data
+    localStorage.removeItem("authToken");
+    sessionStorage.removeItem("authToken");
+    navigate("/login"); // Redirect to login page
+  };
   return (
     <Navbar expand="lg" className="p-3">
       <Container>
@@ -25,7 +33,7 @@ function TopNavbar() {
             </Navbar.Brand>
           </Col>
 
-      
+          {/* Navigation Links */}
           <Col xs={12} md={4} className="text-center">
             <Nav className="justify-content-center">
               <Nav.Link as={Link} to="/" className="fw-semibold">
@@ -37,34 +45,27 @@ function TopNavbar() {
             </Nav>
           </Col>
 
+          {/* Button and Icon Section */}
           <Col xs={12} md={4} className="d-flex justify-content-center justify-content-md-end align-items-center gap-3">
-       
             <Nav.Link href="#airbnb" className="airbnb-link fw-semibold">
               Airbnb your home
             </Nav.Link>
 
-        
             <div className="d-flex align-items-center" style={{ cursor: "pointer", padding: "8px" }}>
               <i className="bi bi-globe fs-5"></i>
             </div>
 
-         
-            <div className="d-flex align-items-center border rounded-pill p-1" style={{ gap: "10px", width: "110px", height: "50px" }}>
-              <NavDropdown
-                title={<i className="bi bi-list dropdown-icon"></i>}
-                id="profile-dropdown"
-                align="end"
-              >
-                <NavDropdown.Item href="#profile">Profile</NavDropdown.Item>
-                <NavDropdown.Item href="#settings">Settings</NavDropdown.Item>
-                <NavDropdown.Item href="#logout">Logout</NavDropdown.Item>
-              </NavDropdown>
-              <i className="bi bi-person-circle fs-4"></i>
-            </div>
-
-     
-            <div className="d-flex align-items-center" style={{ cursor: "pointer" }}>
-              <i className="bi bi-cart4 fs-4" style={{ color: "#FF5A60" }}></i>
+            {/* Login and Signup Buttons */}
+            <div className="d-flex gap-1">
+              <Link to="/login">
+                <button className="btn btn-danger" style={{ borderRadius: '50px' }}>Login</button>
+              </Link>
+              <Link to="/signup">
+                <button className="btn btn-danger" style={{ borderRadius: '50px' }}>Signup</button>
+              </Link>
+              <button onClick={handleLogout}  style={{ borderRadius: '50px' }} className="btn btn-danger">
+                Logout
+              </button>
             </div>
           </Col>
         </Row>

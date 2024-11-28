@@ -1,50 +1,72 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Container, Row, Col, Card, Button, Form, Alert } from "react-bootstrap"; 
+import { Container, Row, Col, Card, Button, Form, Alert } from "react-bootstrap";
 
 const BookingPage = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [property, setProperty] = useState(null);
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [guestCount, setGuestCount] = useState(1);
-  const [errorMessage, setErrorMessage] = useState("");  
-  const [totalPrice, setTotalPrice] = useState(0); 
+  const [errorMessage, setErrorMessage] = useState("");
+  const [totalPrice, setTotalPrice] = useState(null); // Allow null for uninitialized state
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
+  // Assuming user ID from local storage or context
+  const userId = localStorage.getItem("userId");
+
+  // Fetch property details
   useEffect(() => {
     const fetchProperty = async () => {
       try {
         const response = await fetch(`http://localhost:5000/api/listings/${id}`);
+        if (!response.ok) {
+          throw new Error("Property not found");
+        }
         const data = await response.json();
         setProperty(data);
       } catch (error) {
-        console.error("Error retrieving property detail:", error);
+        console.error("Error retrieving property details:", error);
+        setErrorMessage("Failed to load property details.");
       }
     };
 
     fetchProperty();
   }, [id]);
 
+  // Calculate total price
   const calculateTotalPrice = () => {
-    if (!checkInDate || !checkOutDate || guestCount < 1) return 0;
-    
+    if (!property || !checkInDate || !checkOutDate || guestCount < 1) return null;
+
+    const pricePerNight = parseFloat(property.price);
+    if (isNaN(pricePerNight) || pricePerNight <= 0) return null;
+
     const checkIn = new Date(checkInDate);
     const checkOut = new Date(checkOutDate);
-    const diffTime = Math.abs(checkOut - checkIn);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    
-    if (diffDays <= 0) return 0;
 
-    const pricePerNight = property.price;
+    if (isNaN(checkIn.getTime()) || isNaN(checkOut.getTime())) {
+      return null;
+    }
+
+    const diffTime = checkOut - checkIn;
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays <= 0) return null;
+
     return pricePerNight * diffDays * guestCount;
   };
 
+  useEffect(() => {
+    const newTotalPrice = calculateTotalPrice();
+    setTotalPrice(newTotalPrice);
+  }, [property, checkInDate, checkOutDate, guestCount]);
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setErrorMessage("");  
-    setSuccessMessage(""); 
+    setErrorMessage("");
+    setSuccessMessage("");
 
     if (!checkInDate || !checkOutDate || guestCount < 1) {
       setErrorMessage("Please fill in all fields correctly.");
@@ -53,23 +75,24 @@ const BookingPage = () => {
 
     const checkIn = new Date(checkInDate);
     const checkOut = new Date(checkOutDate);
-    const diffTime = Math.abs(checkOut - checkIn);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    if (diffDays <= 0) {
-      setErrorMessage("Check-out date must be after check-in date.");
+    if (isNaN(checkIn.getTime()) || isNaN(checkOut.getTime()) || checkOut <= checkIn) {
+      setErrorMessage("Invalid check-in or check-out dates.");
       return;
     }
 
-    const calculatedTotal = calculateTotalPrice();
-    setTotalPrice(calculatedTotal);
+    if (totalPrice === null) {
+      setErrorMessage("Unable to calculate total price. Please try again.");
+      return;
+    }
 
     const bookingData = {
+      userId,
       propertyId: property._id,
       checkInDate,
       checkOutDate,
       guestCount,
-      totalPrice: calculatedTotal
+      totalPrice,
     };
 
     try {
@@ -83,10 +106,10 @@ const BookingPage = () => {
 
       const data = await response.json();
       if (response.ok) {
-        setSuccessMessage(data.message);
-        setTimeout(() => navigate("/"), 2000); 
+        setSuccessMessage(data.message || "Booking successful!");
+        setTimeout(() => navigate("/"), 2000);
       } else {
-        setErrorMessage(data.message || "Something went wrong. Please try again.");
+        setErrorMessage(data.message || "Failed to create booking. Please try again.");
       }
     } catch (error) {
       console.error("Error creating booking:", error);
@@ -96,16 +119,19 @@ const BookingPage = () => {
 
   if (!property) {
     return (
-      <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh" }}>
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
+      >
         <div className="spinner-border" role="status"></div>
       </div>
-    );  
+    );
   }
 
   return (
     <Container className="my-5">
       <Row>
-        <Col md={6} lg={6}>
+        <Col md={6}>
           <Card>
             <Card.Img
               variant="top"
@@ -116,21 +142,19 @@ const BookingPage = () => {
             <Card.Body>
               <Card.Title>{property.title}</Card.Title>
               <Card.Text>{property.description}</Card.Text>
-              <h4 className="text-primary">{property.price} per night</h4>
+              <h4>{property.price} per night</h4>
             </Card.Body>
           </Card>
         </Col>
-        <Col md={6} lg={6}>
+        <Col md={6}>
           <Card>
             <Card.Body>
               <h3 className="mb-4">Book Your Stay</h3>
-
-              {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}  
-              {successMessage && <Alert variant="success">{successMessage}</Alert>}  
-
+              {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
+              {successMessage && <Alert variant="success">{successMessage}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="checkInDate">
-                  <Form.Label>Check--in Date</Form.Label>
+                  <Form.Label>Check-in Date</Form.Label>
                   <Form.Control
                     type="date"
                     value={checkInDate}
@@ -138,9 +162,8 @@ const BookingPage = () => {
                     required
                   />
                 </Form.Group>
-
-                <Form.Group controlId="checkOutDate" className="my-3">
-                  <Form.Label>Check--out Date</Form.Label>
+                <Form.Group controlId="checkOutDate" className="mt-3">
+                  <Form.Label>Check-out Date</Form.Label>
                   <Form.Control
                     type="date"
                     value={checkOutDate}
@@ -148,8 +171,7 @@ const BookingPage = () => {
                     required
                   />
                 </Form.Group>
-
-                <Form.Group controlId="guestCount">
+                <Form.Group controlId="guestCount" className="mt-3">
                   <Form.Label>Number of Guests</Form.Label>
                   <Form.Control
                     type="number"
@@ -159,17 +181,15 @@ const BookingPage = () => {
                     required
                   />
                 </Form.Group>
-
-                <Button variant="dark" type="submit" className="mt-4">
+                <Button className="mt-4" variant="danger" style={{ borderRadius: "50px" }} type="submit">
                   Confirm Booking
                 </Button>
               </Form>
-              {totalPrice > 0 && (
-                <div className="mt-4">
-                  <h4>Total Price: ${totalPrice.toFixed(2)}</h4>
-                </div>
-              )}
-
+              <div className="mt-4">
+                <h4>
+                  Total Price: {totalPrice !== null ? `$${totalPrice.toFixed(2)}` : "N/A"}
+                </h4>
+              </div>
             </Card.Body>
           </Card>
         </Col>
