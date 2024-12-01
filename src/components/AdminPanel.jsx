@@ -40,29 +40,41 @@ const AdminPanel = () => {
     fetchData();
   }, []);
 
-  const handleDelete = async (id, type) => {
-    const confirmDelete = window.confirm(
-      `Are you sure you want to delete this ${type}?`
-    );
-    if (!confirmDelete) return;
+const handleDelete = async (id, type) => {
+  const confirmDelete = window.confirm(
+    `Are you sure you want to delete this ${type}?`
+  );
 
-    try {
-      const url =
-        type === "listing"
-          ? `http://localhost:5000/api/listings/${id}`
-          : `http://localhost:5000/api/bookings/${id}`;
-      await axios.delete(url);
+  if (!confirmDelete) return;
 
+  try {
+    const url =
+      type === "listing"
+        ? `http://localhost:5000/api/listings/${id}`
+        : `http://localhost:5000/api/bookings/${id}`;
+
+    const response = await axios.delete(url);
+
+    if (response.status === 200) {
+      // Update state after successful deletion
       if (type === "listing") {
         setListings(listings.filter((listing) => listing._id !== id));
       } else {
         setBookings(bookings.filter((booking) => booking._id !== id));
       }
-    } catch (err) {
-      console.error(`Error deleting ${type}:`, err);
-      setError(`Failed to delete the ${type}. Please try again.`);
+
+      // Optionally, provide feedback to the user
+      alert(`${type.charAt(0).toUpperCase() + type.slice(1)} deleted successfully!`);
+    } else {
+      throw new Error(`Failed to delete the ${type}.`);
     }
-  };
+  } catch (err) {
+    console.error(`Error deleting ${type}:`, err);
+    // Provide more specific error feedback to the user if possible
+    setError(`Failed to delete the ${type}. Please try again.`);
+  }
+};
+
 
   const handleCreateListing = async () => {
     if (!listingForm.id || !listingForm.title || !listingForm.price || !listingForm.location) {
@@ -184,7 +196,7 @@ const AdminPanel = () => {
             <tr>
               <th>User</th>
               <th>Listing</th>
-              <th>Price</th>
+              
               <th>Actions</th>
             </tr>
           </thead>
@@ -193,7 +205,6 @@ const AdminPanel = () => {
               <tr key={booking._id}>
                 <td>{booking.userId?.name || "Unknown"}</td>
                 <td>{booking.listingId?.title || "Unknown"}</td>
-                <td>{booking.price}</td>
                 <td>
                   <Button
                     variant="danger"

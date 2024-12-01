@@ -9,7 +9,6 @@ const BookingPage = () => {
   const [checkOutDate, setCheckOutDate] = useState("");
   const [guestCount, setGuestCount] = useState(1);
   const [errorMessage, setErrorMessage] = useState("");
-  const [totalPrice, setTotalPrice] = useState(null); // Allow null for uninitialized state
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
 
@@ -35,33 +34,6 @@ const BookingPage = () => {
     fetchProperty();
   }, [id]);
 
-  // Calculate total price
-  const calculateTotalPrice = () => {
-    if (!property || !checkInDate || !checkOutDate || guestCount < 1) return null;
-
-    const pricePerNight = parseFloat(property.price);
-    if (isNaN(pricePerNight) || pricePerNight <= 0) return null;
-
-    const checkIn = new Date(checkInDate);
-    const checkOut = new Date(checkOutDate);
-
-    if (isNaN(checkIn.getTime()) || isNaN(checkOut.getTime())) {
-      return null;
-    }
-
-    const diffTime = checkOut - checkIn;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-    if (diffDays <= 0) return null;
-
-    return pricePerNight * diffDays * guestCount;
-  };
-
-  useEffect(() => {
-    const newTotalPrice = calculateTotalPrice();
-    setTotalPrice(newTotalPrice);
-  }, [property, checkInDate, checkOutDate, guestCount]);
-
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,18 +53,12 @@ const BookingPage = () => {
       return;
     }
 
-    if (totalPrice === null) {
-      setErrorMessage("Unable to calculate total price. Please try again.");
-      return;
-    }
-
     const bookingData = {
-      userId,
-      propertyId: property._id,
+  
+     
       checkInDate,
       checkOutDate,
       guestCount,
-      totalPrice,
     };
 
     try {
@@ -142,7 +108,7 @@ const BookingPage = () => {
             <Card.Body>
               <Card.Title>{property.title}</Card.Title>
               <Card.Text>{property.description}</Card.Text>
-              <h4>{property.price} per night</h4>
+              <h4>{property.price} per Guest</h4>
             </Card.Body>
           </Card>
         </Col>
@@ -154,7 +120,7 @@ const BookingPage = () => {
               {successMessage && <Alert variant="success">{successMessage}</Alert>}
               <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="checkInDate">
-                  <Form.Label>Check-in-Date</Form.Label>
+                  <Form.Label>Check-in Date</Form.Label>
                   <Form.Control
                     type="date"
                     value={checkInDate}
@@ -185,11 +151,6 @@ const BookingPage = () => {
                   Confirm Booking
                 </Button>
               </Form>
-              <div className="mt-4">
-                <h4>
-                  Total Price: {totalPrice !== null ? `$${totalPrice.toFixed(2)}` : "N/A"}
-                </h4>
-              </div>
             </Card.Body>
           </Card>
         </Col>
