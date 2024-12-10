@@ -14,7 +14,7 @@ const getBookings = async (req, res) => {
 //Post
 const createBooking = async (req, res) => {
   try {
-    const {  listingId, checkInDate, checkOutDate, guests, totalPrice } = req.body;
+    const { checkInDate, checkOutDate, guestCount } = req.body;
 console.log("REQ",req.body)
    // Validate the incoming data
     // if (!userId || !listingId || !checkInDate || !checkOutDate || !guests || !totalPrice) {
@@ -22,11 +22,9 @@ console.log("REQ",req.body)
     // }
 
     const newBooking = new Booking({
-  
       checkInDate,
       checkOutDate,
-      guests,
-      totalPrice,
+      guestCount,
     });
     console.log("newBooking",newBooking);
 
@@ -43,5 +41,21 @@ console.log("REQ",req.body)
     });
   }
 };
+const deleteBooking = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deletedBooking = await Booking.findByIdAndDelete(id);
 
-module.exports = { getBookings, createBooking };
+    if (!deletedBooking) {
+      return res.status(404).json({ error: 'Booking not found' });
+    }
+
+    res.status(200).json({ message: 'Booking deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete booking' });
+  }
+};
+
+
+
+module.exports = { getBookings, createBooking,deleteBooking };
