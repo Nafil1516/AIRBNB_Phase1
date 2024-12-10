@@ -16,7 +16,7 @@ const createBooking = async (req, res) => {
   try {
     const {  listingId, checkInDate, checkOutDate, guests, totalPrice } = req.body;
 console.log("REQ",req.body)
-    // Validate the incoming data
+   // Validate the incoming data
     // if (!userId || !listingId || !checkInDate || !checkOutDate || !guests || !totalPrice) {
     //   return res.status(400).json({ error: 'Missing required fields' });
     // }
