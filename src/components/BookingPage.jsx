@@ -54,8 +54,8 @@ const BookingPage = () => {
     }
 
     const bookingData = {
-  
-     
+
+
       checkInDate,
       checkOutDate,
       guestCount,

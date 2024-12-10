@@ -16,7 +16,7 @@ const SignupPage = () => {
     setErrorMessage("");
     setSuccessMessage("");
 
-    // Form validation
+
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match.");
       return;
@@ -27,7 +27,6 @@ const SignupPage = () => {
       return;
     }
 
-    // Perform signup
     setLoading(true);
     try {
       const response = await fetch("http://localhost:5000/api/auth/register", {
@@ -94,7 +93,7 @@ const SignupPage = () => {
           />
         </Form.Group>
 
-        <Button variant="danger" style={{borderRadius:'50px'}} type="submit" disabled={loading}>
+        <Button variant="danger" style={{ borderRadius: '50px' }} type="submit" disabled={loading}>
           {loading ? <Spinner animation="border" size="sm" /> : "Sign Up"}
         </Button>
       </Form>

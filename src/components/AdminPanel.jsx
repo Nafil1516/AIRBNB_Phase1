@@ -8,7 +8,7 @@ const AdminPanel = () => {
   const [bookings, setBookings] = useState([]);
   const [showCreateListing, setShowCreateListing] = useState(false);
   const [listingForm, setListingForm] = useState({
-    id: "", // New id field added to the form
+    id: "",
     title: "",
     description: "",
     price: "",
@@ -40,40 +40,40 @@ const AdminPanel = () => {
     fetchData();
   }, []);
 
-const handleDelete = async (id, type) => {
-  const confirmDelete = window.confirm(
-    `Are you sure you want to delete this ${type}?`
-  );
+  const handleDelete = async (id, type) => {
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete this ${type}?`
+    );
 
-  if (!confirmDelete) return;
+    if (!confirmDelete) return;
 
-  try {
-    const url =
-      type === "listing"
-        ? `http://localhost:5000/api/listings/${id}`
-        : `http://localhost:5000/api/bookings/${id}`;
+    try {
+      const url =
+        type === "listing"
+          ? `http://localhost:5000/api/listings/${id}`
+          : `http://localhost:5000/api/bookings/${id}`;
 
-    const response = await axios.delete(url);
+      const response = await axios.delete(url);
 
-    if (response.status === 200) {
-      // Update state after successful deletion
-      if (type === "listing") {
-        setListings(listings.filter((listing) => listing._id !== id));
+      if (response.status === 200) {
+        // Update state after successful deletion
+        if (type === "listing") {
+          setListings(listings.filter((listing) => listing._id !== id));
+        } else {
+          setBookings(bookings.filter((booking) => booking._id !== id));
+        }
+
+        // Optionally, provide feedback to the user
+        alert(`${type.charAt(0).toUpperCase() + type.slice(1)} deleted successfully!`);
       } else {
-        setBookings(bookings.filter((booking) => booking._id !== id));
+        throw new Error(`Failed to delete the ${type}.`);
       }
-
-      // Optionally, provide feedback to the user
-      alert(`${type.charAt(0).toUpperCase() + type.slice(1)} deleted successfully!`);
-    } else {
-      throw new Error(`Failed to delete the ${type}.`);
+    } catch (err) {
+      console.error(`Error deleting ${type}:`, err);
+      // Provide more specific error feedback to the user if possible
+      setError(`Failed to delete the ${type}. Please try again.`);
     }
-  } catch (err) {
-    console.error(`Error deleting ${type}:`, err);
-    // Provide more specific error feedback to the user if possible
-    setError(`Failed to delete the ${type}. Please try again.`);
-  }
-};
+  };
 
 
   const handleCreateListing = async () => {
@@ -113,7 +113,7 @@ const handleDelete = async (id, type) => {
       {error && <Alert variant="danger">{error}</Alert>}
 
       {/* Add New Listing Button */}
-      <Button className="mb-4 btn btn-danger" style={{borderRadius:'50px'}} onClick={() => setShowCreateListing(true)}>
+      <Button className="mb-4 btn btn-danger" style={{ borderRadius: '50px' }} onClick={() => setShowCreateListing(true)}>
         Add New Listing
       </Button>
 
@@ -196,7 +196,7 @@ const handleDelete = async (id, type) => {
             <tr>
               <th>User</th>
               <th>Listing</th>
-              
+
               <th>Actions</th>
             </tr>
           </thead>

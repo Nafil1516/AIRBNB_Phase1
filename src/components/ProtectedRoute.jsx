@@ -7,7 +7,7 @@ const getUserRole = () => {
   if (!token) return null;
 
   try {
-    const payload = JSON.parse(atob(token.split(".")[1])); 
+    const payload = JSON.parse(atob(token.split(".")[1]));
     return payload.role;
   } catch (error) {
     return null;
@@ -22,13 +22,13 @@ const ProtectedRoute = ({ children }) => {
   }
 
   try {
-    const payload = JSON.parse(atob(token.split(".")[1])); 
-    console.log("Role from JWT:", payload.role); 
+    const payload = JSON.parse(atob(token.split(".")[1]));
+    console.log("Role from JWT:", payload.role);
     if (payload.role !== "admin") {
       console.log("User is not an admin");
       return <Navigate to="/login" replace />;
     }
-    
+
   } catch (error) {
     console.error("Error decoding token:", error);
     return <Navigate to="/login" replace />;

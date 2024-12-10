@@ -6,44 +6,44 @@ import Col from "react-bootstrap/Col";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../assets/images/logo.png";
-import '../css/NavbarStyles.css'; 
+import '../css/NavbarStyles.css';
 
 function TopNavbar() {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false); 
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       setIsLoggedIn(true);
       try {
-        const payload = JSON.parse(atob(token.split(".")[1])); 
+        const payload = JSON.parse(atob(token.split(".")[1]));
         if (payload.role === "admin") {
-          setIsAdmin(true); 
+          setIsAdmin(true);
         }
       } catch (error) {
         console.error("Error decoding token:", error);
       }
     } else {
       setIsLoggedIn(false);
-      setIsAdmin(false); 
+      setIsAdmin(false);
     }
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     sessionStorage.removeItem("token");
-    setIsLoggedIn(false); 
-    setIsAdmin(false); 
-    navigate("/login"); 
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+    navigate("/login");
   };
 
   return (
     <Navbar expand="lg" className="p-3">
       <Container>
         <Row className="w-100 align-items-center g-3">
-        
+
           <Col xs={12} md={4} className="text-center text-md-start">
             <Navbar.Brand href="/">
               <img
@@ -63,7 +63,7 @@ function TopNavbar() {
                 Experience
               </Nav.Link>
 
-            
+
               {isAdmin && (
                 <Nav.Link as={Link} to="/admin" className="fw-semibold">
                   Admin Panel
